@@ -1,14 +1,16 @@
 #!/bin/bash
 
-curl "http://localhost:4741/sign-up" \
+EMAIL=z
+PASS=z
+
+curl "http://localhost:4741/sign-in" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
   --data '{
     "credentials": {
       "email": "'"${EMAIL}"'",
-      "password": "'"${PASS}"'",
-      "password_confirmation": "'"${CONFIRM}"'"
+      "password": "'"${PASS}"'"
     }
   }'
 
