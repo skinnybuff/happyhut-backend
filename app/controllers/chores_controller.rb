@@ -46,6 +46,6 @@ class ChoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def chore_params
-      params.require(:chore).permit(:chore_name, :chore_interval, :last_done, :chore_done)
+      params.require(:chore).permit(:chore_name, :chore_interval, :last_done, :over_due)
     end
 end

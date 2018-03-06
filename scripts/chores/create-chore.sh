@@ -10,7 +10,7 @@ curl "http://localhost:4741/chores" \
       "chore_name": "'"${NAME}"'",
       "chore_interval": "'"${INTER}"'",
       "last_done": "'"${LAST}"'",
-      "chore_done": "'"${DONE}"'"
+      "over_due": "'"${DONE}"'"
     }
   }'
 
