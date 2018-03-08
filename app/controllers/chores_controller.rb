@@ -1,9 +1,11 @@
-class ChoresController < ApplicationController
-  before_action :set_chore, only: [:show, :update, :destroy]
+# frozen_string_literal: true
+
+class ChoresController < ProtectedController
+  before_action :set_chore, only: %i[show update destroy]
 
   # GET /chores
   def index
-    @chores = Chore.all
+    @chores = current_user.chores.all
 
     render json: @chores
   end
@@ -15,7 +17,7 @@ class ChoresController < ApplicationController
 
   # POST /chores
   def create
-    @chore = Chore.new(chore_params)
+    @chore = current_user.chores.new(chore_params)
 
     if @chore.save
       render json: @chore, status: :created, location: @chore
@@ -39,13 +41,14 @@ class ChoresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chore
-      @chore = Chore.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def chore_params
-      params.require(:chore).permit(:chore_name, :chore_interval, :last_done, :over_due)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chore
+    @chore = current_user.chores.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def chore_params
+    params.require(:chore).permit(:chore_name, :chore_interval, :last_done, :over_due)
+  end
 end
