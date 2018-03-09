@@ -31,3 +31,19 @@ of the over due chores
 This version will have push notifications either
 email or text message according tot the users request
 and supplied info.
+
+
+### **API End-Points**
+## Catalog of Routes
+
+| HTTP Verb | URI Pattern         | Controller#Action |
+|--------|------------------------|-------------------|
+| post   | `/sign-up`             | `User#signup`    |
+| post   | `/sign-in`             | `User#signin`    |
+| delete | `/sign-out/:id`        | `User#signout`   |
+| patch  | `/change-password/:id` | `User#changepw`  |
+| post   | `/chores`         | `Chores#create`  |
+| get    | `/chores/`        | `Chores#index` |
+| get    | `/chores/:id`     | `Chores#show` |
+| delete | `/chores/:id`     | `Chores#destroy` |
+| patch  | `/chores/:id`     | `Chores#update` |
